@@ -17,9 +17,9 @@ class MyHomePage extends StatelessWidget {
         centerTitle: true,
         title: Text(
           'List Of Users',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.blue, // Change the background color
+        backgroundColor: Colors.grey.shade800, // Change the background color
         elevation: 4, // Add elevation for a shadow effect
       ),
       body: SingleChildScrollView(
@@ -61,10 +61,22 @@ class MyHomePage extends StatelessWidget {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
-                  return Center(child: Text('Error: ${snapshot.error}'));
+                  return Center(
+                      child: Text(
+                    'Error: ${snapshot.error}',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.white,
+                    ),
+                  ));
                 } else {
                   if (userDataProvider.userData.isEmpty) {
-                    return Center(child: Text('No products available.'));
+                    return Center(
+                        child: Text('No products available.',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                            )));
                   } else {
                     return ListView.builder(
                       shrinkWrap: true,
@@ -101,6 +113,8 @@ class MyHomePage extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                 ),
+                                maxLines: 1, // Limit text to a single line
+                                overflow: TextOverflow.ellipsis,
                               ),
                               subtitle: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,6 +126,8 @@ class MyHomePage extends StatelessWidget {
                                       fontSize: 14,
                                       color: Colors.grey.shade700,
                                     ),
+                                    maxLines: 1, // Limit text to a single line
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                   SizedBox(height: 4),
                                   Text(
@@ -120,6 +136,8 @@ class MyHomePage extends StatelessWidget {
                                       fontSize: 14,
                                       color: Colors.grey.shade700,
                                     ),
+                                    maxLines: 1, // Limit text to a single line
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                   SizedBox(height: 4),
                                   // Add more details here as needed

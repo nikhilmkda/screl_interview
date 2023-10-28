@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:screl_interview/model/model_class.dart';
 import 'package:screl_interview/view/user_location_map_screen.dart';
 
@@ -22,8 +23,11 @@ class UserDetailedScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('User Detail', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.blue,
+        title: Text(
+          'User Detail',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.grey.shade800,
       ),
       body: Container(
         color: Colors.grey, // White background color inside the body
@@ -102,12 +106,15 @@ class UserDetailedScreen extends StatelessWidget {
       child: Text(
         info,
         style: TextStyle(fontSize: 20, color: Colors.white),
+        maxLines: 1, // Limit text to a single line
+        overflow: TextOverflow.ellipsis,
       ),
     );
   }
 
   Widget _buildAddressContainer() {
     return Container(
+      width: double.infinity,
       padding: EdgeInsets.all(12.0),
       margin: EdgeInsets.only(bottom: 12.0),
       decoration: BoxDecoration(
@@ -130,10 +137,13 @@ class UserDetailedScreen extends StatelessWidget {
             style: TextStyle(
                 fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
           ),
+          Gap(15),
           Text(
             "${address.street}, ${address.suite}, ${address.city}, ${address.zipcode}",
             style: TextStyle(
                 fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white),
+            maxLines: 1, // Limit text to a single line
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),
