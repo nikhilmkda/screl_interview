@@ -142,7 +142,7 @@ class UserDetailedScreen extends StatelessWidget {
             "${address.street}, ${address.suite}, ${address.city}, ${address.zipcode}",
             style: TextStyle(
                 fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white),
-            maxLines: 1, // Limit text to a single line
+            maxLines: 3, // Limit text to a single line
             overflow: TextOverflow.ellipsis,
           ),
         ],

@@ -92,21 +92,7 @@ class MyHomePage extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => UserDetailedScreen(
-                                    id: userData.id,
-                                    name: userData.name,
-                                    username: userData.username,
-                                    email: userData.email,
-                                    address: userData.address,
-                                  ),
-                                ),
-                              );
-                            },
-                            child: ListTile(
+                          child: ListTile(
                               title: Text(
                                 userData.name,
                                 style: TextStyle(
@@ -143,13 +129,26 @@ class MyHomePage extends StatelessWidget {
                                   // Add more details here as needed
                                 ],
                               ),
-                              trailing: Icon(
-                                Icons.arrow_forward,
-                                color: Colors.blue,
-                                size: 30,
-                              ),
-                            ),
-                          ),
+                              trailing: IconButton(
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            UserDetailedScreen(
+                                          id: userData.id,
+                                          name: userData.name,
+                                          username: userData.username,
+                                          email: userData.email,
+                                          address: userData.address,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  icon: Icon(
+                                    Icons.arrow_forward,
+                                    color: Colors.blue,
+                                    size: 30,
+                                  ))),
                         );
                       },
                     );
